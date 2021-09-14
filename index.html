@@ -12,10 +12,25 @@
 </style>
 
 <body>
-    <input type="text" id='enc_box' name="encrypt_box" placeholder="type something">
-    <button onclick="encrypt('enc_box','enc_res')">Encrypt</button>
-    <button onclick="decrypt('enc_box','enc_res')">Decrypt</button>
+    <h1>Sample Usage of encryption.lib</h1>
+    <script>
+        function clickfunc_enc(){
+            var value_box = document.getElementById("enc_box").value;
+            document.getElementById("p_id").innerHTML = encrypt(value_box);
+            //alert(encrypt(value_box));
+        }
 
-    <div id="enc_res" style="display: flex; margin-top: 20px; height: auto; width: 300px;"><script></script></div>
+        function clickfunc_dec(){
+            var value_box_d = document.getElementById("enc_box").value;
+            document.getElementById("p_id").innerHTML = decrypt(value_box_d);
+            //alert(decrypt(value_box_d));
+        }
+    </script>
+
+    <input type="text" id='enc_box' name="encrypt_box" placeholder="type something">
+    <button onclick="clickfunc_enc()">Encrypt</button>
+    <button onclick="clickfunc_dec()">Decrypt</button>
+
+    <div id="enc_res" style="display: flex; margin-top: 20px; height: auto; width: 300px;"><p id="p_id"></p></div>
 </body>
 </html>

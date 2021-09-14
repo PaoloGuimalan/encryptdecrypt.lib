@@ -1,12 +1,9 @@
-function encrypt(value_from, location){
-    var value_enc = document.getElementById(value_from).value;
-    var value_loc = location;
-
+function encrypt(value_from){
+    var value_enc = value_from;
     const splitting = value_enc.split("");
     var proc = pattern_process(splitting);
-    document.getElementById(location).innerHTML = proc;
 
-    //return(proc);
+    return proc;
 }
 
 function pattern_process(to_split){
@@ -43,13 +40,10 @@ function repattern_process(to_bind){
     return string_value_d;
 }
 
-function decrypt(value_from_d, location_d){
-    var value_enc_d = document.getElementById(value_from_d).value;
-    var value_loc_d = location_d;
-
+function decrypt(value_from_d){
+    var value_enc_d = value_from_d;
     const splitting_d = value_enc_d.match(/.{1,4}/g);
     var proc_d = repattern_process(splitting_d);
-    document.getElementById(location_d).innerHTML = proc_d;
 
-    //return(proc);
+    return proc_d;
 }
