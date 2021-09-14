@@ -4,11 +4,18 @@
     <script src="encryption.js"></script>
 </head>
 
+<style>
+    html, body{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
 <body>
     <input type="text" id='enc_box' name="encrypt_box" placeholder="type something">
     <button onclick="encrypt('enc_box','enc_res')">Encrypt</button>
     <button onclick="decrypt('enc_box','enc_res')">Decrypt</button>
 
-    <p id="enc_res" style="width: 30%;"><script></script></p>
+    <div id="enc_res" style="display: flex; margin-top: 20px; height: auto; width: 300px;"><script></script></div>
 </body>
 </html>
