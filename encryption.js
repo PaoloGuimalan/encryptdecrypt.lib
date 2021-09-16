@@ -1,9 +1,28 @@
-function encrypt(value_from){
-    var value_enc = value_from;
+function encrypt(value_from, count){
+    const value_enc = value_from;
     const splitting = value_enc.split("");
-    var proc = pattern_process(splitting);
+    const proc = pattern_process(splitting);
 
-    return proc;
+    if(count > 0 && count < 6){
+        return encrypt(proc, count-1);
+    }
+    else if(count > 5){
+        document.write(
+            "<div style='color: red'>Encryption Count exceeded to 5!</div>"
+            );
+    }
+    else if(count < 0){
+        document.write(
+            "<body style='background: grey; margin: 0; width: 100%; height: 100%;'>"+
+                "<div style='color: red; width: 80%; height: 100px; background-color: black; margin: 50px auto 0 auto; text-align: center; font-size: 15px;'>"+
+                    "<p style=''>Encryption Count is invalid!</p><br><p>encryption.js: line 14 occured!</p>"+
+                "</div>"+
+            "</body>"
+            );
+    }
+    else if(count == 0){
+        return proc;
+    }
 }
 
 function pattern_process(to_split){
@@ -40,10 +59,20 @@ function repattern_process(to_bind){
     return string_value_d;
 }
 
-function decrypt(value_from_d){
+function decrypt(value_from_d, count_d){
     var value_enc_d = value_from_d;
     const splitting_d = value_enc_d.match(/.{1,4}/g);
     var proc_d = repattern_process(splitting_d);
 
-    return proc_d;
+    if(count_d > 0){
+        return decrypt(proc_d, count_d-1);
+    }
+    else if(count_d < 0){
+        document.write(
+            "<div style='color: red'>Error Occured!</div>"
+            );
+    }
+    else if(count_d == 0){
+        return proc_d;
+    }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>Encryption Test</title>
-    <script src="encryption.js"></script>
+    <script src="encryption.js" type="text/javascript"></script>
 </head>
 
 <style>
@@ -16,14 +16,20 @@
     <script>
         function clickfunc_enc(){
             var value_box = document.getElementById("enc_box").value;
-            document.getElementById("p_id").innerHTML = encrypt(value_box);
+            //var sec_enc = encrypt(value_box); //first decrypt
+            document.getElementById("p_id").innerHTML = encrypt(value_box, 2); //second decrypt while displayed
             //alert(encrypt(value_box));
+
+            //This is a two time encryption function
         }
 
         function clickfunc_dec(){
             var value_box_d = document.getElementById("enc_box").value;
-            document.getElementById("p_id").innerHTML = decrypt(value_box_d);
+            //var sec_enc_d = decrypt(value_box_d); //first decrypt
+            document.getElementById("p_id").innerHTML = decrypt(value_box_d, 2); //second decrypt while displayed
             //alert(decrypt(value_box_d));
+
+            //This is a two time decryption function
         }
     </script>
 
