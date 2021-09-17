@@ -1,3 +1,22 @@
+function error_code(code, from){
+    if(from == "enc"){
+        if(code == "E000x001"){
+            return "Encryption Count exceeded to 5!";
+        }
+        else if(code == "E000x002"){
+            return "Encryption Count is Invalid!";
+        }
+    }
+    else if(from == 'dec'){
+        if(code == "E001x001"){
+            return "Decryption Count exceeded to 5!";
+        }
+        else if(code == "E001x002"){
+            return "Decryption Count is Invalid!";
+        }
+    }
+}
+
 function encrypt(value_from, count){
     const value_enc = value_from;
     const splitting = value_enc.split("");
@@ -8,16 +27,20 @@ function encrypt(value_from, count){
     }
     else if(count > 5){
         document.write(
-            "<div style='color: red'>Encryption Count exceeded to 5!</div>"
+            `<body style='background: grey; margin: 0; width: 100%; height: 100%; font-family: Arial;'>`+
+                `<div style='width: 80%; height: auto; background-color: black; margin: 50px auto 0 auto; text-align: center; font-size: 15px;'>`+
+                    `<p style='color: red; padding-top: 10px'>${error_code("E000x001", "enc")}</p><br><p style='color: orange;'>Error code: E000x001</p><p style='color: orange; padding-bottom: 10px'>encryption.js: line 18 occured!</p>`+
+                `</div>`+
+            `</body>`
             );
     }
     else if(count < 0){
         document.write(
-            "<body style='background: grey; margin: 0; width: 100%; height: 100%;'>"+
-                "<div style='color: red; width: 80%; height: 100px; background-color: black; margin: 50px auto 0 auto; text-align: center; font-size: 15px;'>"+
-                    "<p style=''>Encryption Count is invalid!</p><br><p>encryption.js: line 14 occured!</p>"+
-                "</div>"+
-            "</body>"
+            `<body style='background: grey; margin: 0; width: 100%; height: 100%; font-family: Arial;'>`+
+                `<div style='width: 80%; height: auto; background-color: black; margin: 50px auto 0 auto; text-align: center; font-size: 15px;'>`+
+                    `<p style='color: red; padding-top: 10px'>${error_code("E000x002", "enc")}</p><br><p style='color: orange;'>Error code: E000x002</p><p style='color: orange; padding-bottom: 10px'>encryption.js: line 27 occured!</p>`+
+                `</div>`+
+            `</body>`
             );
     }
     else if(count == 0){
@@ -69,7 +92,20 @@ function decrypt(value_from_d, count_d){
     }
     else if(count_d < 0){
         document.write(
-            "<div style='color: red'>Error Occured!</div>"
+            `<body style='background: grey; margin: 0; width: 100%; height: 100%; font-family: Arial;'>`+
+                `<div style='width: 80%; height: auto; background-color: black; margin: 50px auto 0 auto; text-align: center; font-size: 15px;'>`+
+                    `<p style='color: red; padding-top: 10px'>${error_code("E001x002", "dec")}</p><br><p style='color: orange;'>Error code: E001x002</p><p style='color: orange; padding-bottom: 10px'>encryption.js: line 27 occured!</p>`+
+                `</div>`+
+            `</body>`
+            );
+    }
+    else if(count_d > 5){
+        document.write(
+            `<body style='background: grey; margin: 0; width: 100%; height: 100%; font-family: Arial;'>`+
+                `<div style='width: 80%; height: auto; background-color: black; margin: 50px auto 0 auto; text-align: center; font-size: 15px;'>`+
+                    `<p style='color: red; padding-top: 10px'>${error_code("E001x001", "dec")}</p><br><p style='color: orange;'>Error code: E000x001</p><p style='color: orange; padding-bottom: 10px'>encryption.js: line 18 occured!</p>`+
+                `</div>`+
+            `</body>`
             );
     }
     else if(count_d == 0){
